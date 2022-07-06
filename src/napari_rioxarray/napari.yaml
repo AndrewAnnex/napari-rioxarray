@@ -1,0 +1,11 @@
+name: napari-rioxarray
+display_name: Rioxarray Plugin
+contributions:
+  commands:
+    - id: napari-rioxarray.get_reader
+      python_name: napari_rioxarray._reader:napari_get_reader
+      title: Open data with Rioxarray Plugin
+  readers:
+    - command: napari-rioxarray.get_reader
+      accepts_directories: false
+      filename_patterns: ['*.npy']
