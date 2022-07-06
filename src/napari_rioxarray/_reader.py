@@ -73,10 +73,14 @@ def reader_function(path):
     # handle both a string and a list of strings
     paths = [path] if isinstance(path, str) else path
     # load all files into array
+    # todo look at dask https://napari.org/tutorials/processing/dask.html
     if len(paths) == 1:
         data: DataArray = open_dataarray(paths[0], engine="rasterio")
     else:
-        data: DataArray = open_mfdataset(paths, engine="rasterio").to_array()
+        # todo test with a mspec observation
+        data = open_mfdataset(
+            paths, engine="rasterio", concat_dim="band", combine="nested"
+        ).to_array()
     # optional kwargs for the corresponding viewer.add_* method
     add_kwargs = {"name": data.name}
     return [(data, add_kwargs, "image")]
