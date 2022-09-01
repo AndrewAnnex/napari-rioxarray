@@ -9,8 +9,7 @@ from . import data
 def test_reader(tmp_path):
     """An example of how you might test your plugin."""
 
-    # get
-    with importlib.resources.path(data, "S2A_MSIL1C_20170102T111442_N0204_R137_T30TXT_20170102T111441_TCI_cloudoptimized_512_100m.tif") as my_test_file:
+    with importlib.resources.path(data, "S2A_MSIL1C_20170102T111442_N0204_R137_T30TXT_20170102T111441_TCI_cloudoptimized_512_200m.tif") as my_test_file:
         # try to read it back in
         my_test_file = str(my_test_file.absolute())
         reader = napari_get_reader(my_test_file)
