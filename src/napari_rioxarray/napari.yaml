@@ -8,4 +8,4 @@ contributions:
   readers:
     - command: napari-rioxarray.get_reader
       accepts_directories: false
-      filename_patterns: ['*.vrt', '*.img', '*.lbl', '*.cub', '*.fits', '*.IMG', '*.LBL', '*.CUB', '*.FITS']
+      filename_patterns: ['*.vrt', '*.tif', '*.tiff', '*.TIF', '*.TIFF', '*.img', '*.lbl', '*.cub', '*.fits', '*.IMG', '*.LBL', '*.CUB', '*.FITS']

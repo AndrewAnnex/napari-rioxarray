@@ -39,7 +39,7 @@ def napari_get_reader(path):
         path = path[0]
 
     # if we know we cannot read the file, we immediately return None.
-    if not Path(path).suffix.lower() not in supported_raster_extensions:
+    if not Path(path).suffix.lower().strip(".") in supported_raster_extensions:
         return None
 
     # otherwise we return the *function* that can read ``path``.
@@ -78,9 +78,7 @@ def reader_function(path):
         data: DataArray = open_dataarray(paths[0], engine="rasterio")
     else:
         # todo test with a mspec observation
-        data = open_mfdataset(
-            paths, engine="rasterio", concat_dim="band", combine="nested"
-        ).to_array()
+        data = open_mfdataset(paths, engine="rasterio", concat_dim="band", combine="nested").to_array()
     # optional kwargs for the corresponding viewer.add_* method
     add_kwargs = {"name": data.name}
     return [(data, add_kwargs, "image")]
